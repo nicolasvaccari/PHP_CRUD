@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 require_once "includes/banco.php";
+require_once "includes/login.php";
 require_once "includes/funcoes.php"; 
 $ordem = $_GET['o'] ?? "nome";
 $chave = $_GET['c'] ?? "";
@@ -15,6 +16,8 @@ $chave = $_GET['c'] ?? "";
 		<div id="corpo">
 		<?php include "topo.php"; ?>
 		<h1>Escolha seu jogo</h1>
+		<?php
+			echo msg_sucesso('Parabéns!') ?>
 		<form method="get" action="index.php">
 		<p class= "pequeno"> Ordenar: <a href="index.php?o=n">Nome</a> | 
 		<a href="index.php?o=d">Distribuidora</a> | 
