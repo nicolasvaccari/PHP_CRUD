@@ -7,13 +7,13 @@ require_once "includes/funcoes.php";
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="estilo.css"/>
+		<link rel="stylesheet" href="estilos.css"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 		<title>Detalhes do Jogo</title>
 	</head>
 	<body>
 		<div id="corpo">
-			<?php include "topo.php"; ?>
+		
 			<table class="detalhes">
 			<?php
 				$cod = $_GET['cod'] ?? 0;
@@ -38,7 +38,7 @@ require_once "includes/funcoes.php";
 			<a href="index.php"><img src="icones/icoback.png"/></a>
 			<a href="index.php"><i class="material-icons">face</i></a>
 
-</a>
+			</a>
 		</div>
 		<?php include "rodape.php"; ?>
 	</body>

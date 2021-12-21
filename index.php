@@ -9,23 +9,40 @@ $chave = $_GET['c'] ?? "";
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="estilo.css"/>
-		<title>Listagem de Jogos</title>
+		<link rel="stylesheet" href="estilos.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+		<title>My Game List</title>
 	</head>
 	<body>
+		<header>
+			<form method="get" action="index.php">
+				<at href="index.php" id="titulo"><h2>My Game List</h2></a>
+	
+				<input type="text" name="c" size="10" maxlength="40" id="inp" placeholder=" Pesquisar..."/>
+				<input type="submit" value="Ok" id="butao"/></p>
+				<div id="top"><?php include "topo.php";?></div>
+			</form>
+		</header>
 		<div id="corpo">
-		<?php include "topo.php"; ?>
-		<h1>Escolha seu jogo</h1>
-		<?php
-			echo msg_sucesso('Parabéns!') ?>
+	
+		<a href="index.php"><span class="material-icons-outlined" id="home">
+			home
+		</span></a>
+		
+		<h2>Escolha seu jogo</h2>
+		<span class="material-icons-outlined">
+		search
+		</span>
+			<h3>Top Game List</h3>
 		<form method="get" action="index.php">
-		<p class= "pequeno"> Ordenar: <a href="index.php?o=n">Nome</a> | 
-		<a href="index.php?o=d">Distribuidora</a> | 
-		<a href="index.php?o=n1">Nota Alta</a> | 
-		<a href="index.php?o=n2">Nota Baixa</a> | 
-		Buscar:
-		<input type="text" name="c" size="10" maxlength="40"/>
-		<input type="submit" value="Ok"/></p>
+			<p class= "pequeno"> Ordenar: <a href="index.php?o=n"class="cl">Nome</a> | 
+			<a href="index.php?o=d"class="cl">Distribuidora</a> | 
+			<a href="index.php?o=n1" class="cl">Nota Alta</a> | 
+			<a href="index.php?o=n2"class="cl">Nota Baixa</a> 
+			<br>
+			<br>
+			</p>
 		</form>
 		<table class="listagem">
 			<?php
@@ -58,8 +75,13 @@ $chave = $_GET['c'] ?? "";
 							$thumb = thumb($reg->capa);
 							echo "<img src='$thumb' class='mini'/>";
 							# Mostrar jogo
-							echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
-							echo "<br>($reg->genero) $reg->produtora";
+							echo "<td><a href='detalhes.php?cod=$reg->cod'id='nome'>$reg->nome</a>";
+							echo "<br><p class='genros'>($reg->genero) $reg->produtora</p>";
+							if (is_admin()) {
+								# code...
+							}elseif (is_editor()) {
+								# code...
+							}
 						}
 					} else {
 						echo "<p>Nenhum registro encontrado...</p>";
@@ -68,6 +90,8 @@ $chave = $_GET['c'] ?? "";
 			?>
 		</table>
 		</div>
-		<?php include "rodape.php"; ?>
+		<footer>
+			<?php include "rodape.php"; ?>
+		</footer>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(isset($_SESSION['user'])) {
+  if(!isset($_SESSION['user'])) {
       #ISSET = NÃO, variável foi definida.
       #!ISSET = variável não foi definida.
       $_SESSION['user'] = '';
@@ -23,7 +23,7 @@
         return $hash;
     }
     function testarhash($senha, $hash) {
-        $ok = password_verify(cripto($senha), $hash);
+        $ok = password_verify($senha, $hash);
         return $ok;
     }
     function logout() {
@@ -32,10 +32,44 @@
         unset($_SESSION['nome']);
         unset($_SESSION['tipo']);
     }
-#$original = 'estudonauta';
+    function is_logado() {
+        if (empty($_SESSION["user"])) {
+            return false;
+        }else {
+            return true;
+        }
+
+    }
+    function is_admin() {
+        $t = $_SESSION["tipo"] ?? null;
+            if (is_null($t)) {
+                return false;
+            }else {
+                if ($t == 'admin') {
+                    return true;
+                }else {
+                    return false;
+                }
+
+            }
+
+    }
+    function is_editor() {
+        $t = $_SESSION["tipo"] ?? null;
+            if (is_null($t)) {
+                return false;
+            }else {
+                if ($t == 'editor'){
+                    return true;
+                }
+            }
+
+
+    }
+    #$original = 'teste';
 #echo "$original --- ";
 #echo cripto($original) . " --- ";
-#echo gerarhash($original ) . " --- ";
+    #echo gerarhash($original);
 #--------------------------------------------------------------------
 #echo testarhash("ftuvepobvub",'$2y$10$e7YMw6gfwS..RQ/4YCTXqenYtQF5ZaFWfYCYAHxlXSuFBViOaE9Xi');
 

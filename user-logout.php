@@ -7,7 +7,7 @@ require_once "includes/funcoes.php";
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="estilo.css"/>
+		<link rel="stylesheet" href="estilos.css"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 		<title>???</title>
 	</head>
@@ -17,6 +17,8 @@ require_once "includes/funcoes.php";
                 logout();
                 echo msg_sucesso('Usuário desconectado com sucesso.');
                 echo voltar();
+				header("Location: index.php");
+                die();
             ?>
 
         </div>

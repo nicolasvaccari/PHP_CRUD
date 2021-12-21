@@ -26,7 +26,7 @@
 		return $resp;
 	}
 	function msg_erro ($m) {
-		$resp = "<div class='sucesso'>$m</div>";
+		$resp = "<div class='erro'>$m</div>";
 		return $resp;
 	}
 
